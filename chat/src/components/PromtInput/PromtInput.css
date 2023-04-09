@@ -1,0 +1,14 @@
+.promt-input {
+	display: flex;
+	align-items: center;
+	justify-content: flex-start;
+	margin-top: auto;
+	width: 100%;
+	gap: 15px;
+}
+
+.promt-input textarea {
+	width: 90%;
+	border-radius: var(--border-radius);
+	resize: none;
+}

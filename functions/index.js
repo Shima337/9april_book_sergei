@@ -47,7 +47,7 @@ const getEmbedding = async (query, model) => {
 const getQueryResponse = async (index, vectors) => {
   const queryRequest = {
     vector: vectors,
-    topK: 15,
+    topK: 3,
     includeMetadata: true,
     includeValues: true,
   };
@@ -64,7 +64,7 @@ const getAugmentedQuery = (contexts, query) => {
 
 const getChatCompletion = async (primer, augmentedQuery) => {
   const completion = await openai.createChatCompletion({
-    model: "gpt-4",
+    model: "gpt-3.5-turbo",
     messages: [
       { role: "system", content: primer },
       { role: "user", content: augmentedQuery },
@@ -107,7 +107,7 @@ app.get("/stream", async (req, res) => {
   const augmentedQuery = getAugmentedQuery(contexts, query);
 
   const createChatCompletionConfig = {
-    model: "gpt-4",
+    model: "gpt-3.5-turbo",
     messages: [
       { role: "system", content: primer },
       { role: "user", content: augmentedQuery },
